@@ -1,1 +1,62 @@
-About
+---
+import "../styles/global.css";
+const pageTitle = "About";
+const identity = {
+    firstName: "Sarah",
+    country: "Canada",
+    occupation: "Technical Writer",
+    hobbies: ["photography", "birdwatching", "baseball"],
+};
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+const happy = true;
+const finished = false;
+const goal = 3;
+const skillColor = "crimson";
+const fontWeight = "bold";
+const textCase = "uppercase";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{pageTitle}</title>
+        <style define:vars={{ skillColor, fontWeight, textCase }}>
+            h1 {
+                color: purple;
+                font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+        </style>
+    </head>
+    <body>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/blog/">Blog</a>
+        <h1>{pageTitle}</h1>
+        <p>Here are a few facts about me:</p>
+        <ul>
+            <li>First Name: {identity.firstName}</li>
+            <li>Country: {identity.country}</li>
+            <li>Occupation: {identity.occupation}</li>
+            <li>Hobbies: {identity.hobbies.join(", ")}</li>
+        </ul>
+        <p>Here are a few skills I have:</p>
+        <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+        {happy && <p>I'm happy</p>}
+        {finished && <p>I'm finished</p>}
+        {
+            goal === 3 ? (
+                <p>My goal is {goal} days</p>
+            ) : (
+                <p>My goal is not {goal} days</p>
+            )
+        }
+    </body>
+</html>
